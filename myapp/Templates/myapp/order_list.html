@@ -1,0 +1,26 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+
+<h2>Orders List</h2>
+
+<table border="1">
+    <tr>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+    </tr>
+
+    {% for order in orders %}
+    <tr>
+        <td>{{ order.customer.name }}</td>
+        <td>{{ order.product.name }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.order_date }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

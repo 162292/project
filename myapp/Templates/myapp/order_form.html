@@ -1,0 +1,31 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+
+<h2>Add Order</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Customer:</label>
+    <select name="customer">
+        {% for customer in customers %}
+        <option value="{{ customer.id }}">{{ customer.name }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <label>Product:</label>
+    <select name="product">
+        {% for product in products %}
+        <option value="{{ product.id }}">{{ product.name }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <input type="number" name="quantity" placeholder="Quantity"><br><br>
+
+    <button type="submit">Place Order</button>
+</form>
+
+{% endblock %}

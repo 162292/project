@@ -1,0 +1,25 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+
+{% if product %}
+<h2>Edit Product</h2>
+{% else %}
+<h2>Add Product</h2>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Name" value="{{ product.name|default:'' }}"><br><br>
+
+    <input type="text" name="category" placeholder="Category" value="{{ product.category|default:'' }}"><br><br>
+
+    <input type="number" name="price" placeholder="Price" value="{{ product.price|default:'' }}"><br><br>
+
+    <input type="number" name="stock" placeholder="Stock" value="{{ product.stock|default:'' }}"><br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}
